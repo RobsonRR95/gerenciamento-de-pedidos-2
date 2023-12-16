@@ -161,11 +161,6 @@ public class PedidoGUI extends javax.swing.JFrame {
         jScrollPane2.setBounds(540, 170, 370, 330);
 
         btAdicionar.setText("Adicionar >>");
-        btAdicionar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                btAdicionarMousePressed(evt);
-            }
-        });
         btAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAdicionarActionPerformed(evt);
@@ -334,26 +329,6 @@ public class PedidoGUI extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tbProdutosMouseClicked
 
-    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
-        System.out.println("adicionou o objeto");
-        System.out.println("Codigo do cliebte quando aciona o botão "+c.getCodCliente()) ;
-        valor=0;
-            for (int i = 0; i < lista.size(); i++) {
-                DefaultTableModel model = (DefaultTableModel) tbPedido.getModel();
-                Object[] rowData = {""};
-                model.addRow(rowData);
-                tbPedido.setValueAt(lista.get(i).getCodPedido(), i, 0);
-                tbPedido.setValueAt(lista.get(i).getQtd_produto(), i, 1);
-                tbPedido.setValueAt(lista.get(i).getValor_produtos(), i, 2);
-                valor = valor + lista.get(i).getValor_produtos();
-                tfTotal.setText(String.valueOf( valor));
-                qtd = qtd + lista.get(i).getQtd_produto();
-                System.out.println("Codigo do cliebte quando aciona o botão "+c.getCodCliente()) ;
-                
-            }
-        
-    }//GEN-LAST:event_btAdicionarActionPerformed
-
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
          this.dispose();
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -370,10 +345,9 @@ public class PedidoGUI extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void btAdicionarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btAdicionarMousePressed
+    private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_btAdicionarMousePressed
+    }//GEN-LAST:event_btAdicionarActionPerformed
 
     /**
      * @param args the command line arguments

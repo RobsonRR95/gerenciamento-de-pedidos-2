@@ -9,6 +9,7 @@ import java.util.Objects;
 
 public class Pedido {
     private int codPedido;
+    private int codCliente;
     private float qtd_produto;
     private float valor_produtos;
     private Date entrega;
@@ -20,17 +21,19 @@ public class Pedido {
     }
      
      
-    public Pedido(float qtd_produto, float valor_produtos) {
+    public Pedido(float qtd_produto, float valor_produtos, int codCliente) {
         this.qtd_produto = qtd_produto;
         this.valor_produtos = valor_produtos;
+        this.codCliente = codCliente;
     }
 
-    public Pedido(float qtd_produto, float valor_produtos, Date entrega, int pagamento, Date data_pagamento) {
+    public Pedido(float qtd_produto, float valor_produtos, Date entrega, int pagamento, Date data_pagamento, int codCliente) {
         this.qtd_produto = qtd_produto;
         this.valor_produtos = valor_produtos;
         this.entrega = entrega;
         this.pagamento = pagamento;
         this.data_pagamento = data_pagamento;
+        this.codCliente = codCliente;
     }
        
     
@@ -42,6 +45,15 @@ public class Pedido {
         this.codPedido = codPedido;
     }
 
+    public int getCodCliente() {
+        return codCliente;
+    }
+
+    public void setCodCliente(int codCliente) {
+        this.codCliente = codCliente;
+    }
+    
+    
     public float getQtd_produto() {
         return qtd_produto;
     }

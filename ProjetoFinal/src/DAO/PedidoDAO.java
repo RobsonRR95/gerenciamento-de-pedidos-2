@@ -28,25 +28,16 @@ public class PedidoDAO implements OperacoesDAO {
             try {
                 Connection conn = ConexaoMySQL.getConexaoMySQL();
                     PreparedStatement ps;
-                ps = conn.prepareStatement("INSERT INTO pedidos (Qtd_produto, Valor_produtos) VALUES (?,?)",
+                ps = conn.prepareStatement("INSERT INTO pedidos (Qtd_produto, Valor_produtos, fk_codCliente) VALUES (?,?,?)",
                   Statement.RETURN_GENERATED_KEYS);  
                 
                 ps.setFloat(1, p.getQtd_produto());
                 ps.setFloat(2, p.getValor_produtos());
+                ps.setInt(3, p.getCodCliente());
 
                 int rowcount = ps.executeUpdate(); 
                 
                 conn = ConexaoMySQL.getConexaoMySQL();
-                    
-                PreparedStatement ps1 = conn.prepareStatement("INSERT INTO pedido_cliente (fk_codPedido, fk_codCliente) VALUES (?,?)");
-                
-                System.out.println("codPedido " + rowcount);
-                System.out.println("codCliente " + p.getPagamento());
-                ps1.setInt(1, rowcount);
-                ps1.setInt(2, p.getPagamento());
-                
-                
-                //ps1.executeUpdate(); 
                 
                 conn.close();
 

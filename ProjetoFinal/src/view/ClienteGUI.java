@@ -73,7 +73,7 @@ public class ClienteGUI extends javax.swing.JFrame {
 
         //desabilita os botoes 
         btSalvar.setEnabled(false);
-        btCancelar.setEnabled(false);
+        //btCancelar.setEnabled(false);
     }
 
     /**
@@ -629,17 +629,7 @@ public class ClienteGUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
-        Util.EditarFrame.limparDados(this);
-        Util.EditarFrame.desativaCampos(this);
-        btNovo.setEnabled(true);
-        btEditar.setEnabled(false);
-        btDesabilitar.setEnabled(false);
-        btSalvar.setEnabled(false);
-        btCancelar.setEnabled(false);
-        tfCodigo.setText("");
-        tbClientes.setVisible(true);
-        tfNome.requestFocus();
-        operacao = 1;
+        this.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void tbClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbClientesMouseClicked

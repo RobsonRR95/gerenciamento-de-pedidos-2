@@ -51,6 +51,14 @@ public class LoginGUI extends javax.swing.JFrame {
 
         jLabel2.setText("Senha");
 
+        jSenha.setText("1234");
+        jSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSenhaActionPerformed(evt);
+            }
+        });
+
+        jUsuario.setText("teste");
         jUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jUsuarioActionPerformed(evt);
@@ -187,6 +195,10 @@ public class LoginGUI extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         System.exit(0);        // TODO add your handling code here:
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSenhaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jSenhaActionPerformed
 
     /**
      * @param args the command line arguments

@@ -72,13 +72,13 @@ public class Cliente extends ModelPessoa {
     public void gerarCod(Object obj ) {
         
     try (Connection conn = ConexaoMySQL.getConexaoMySQL()) {
-            PreparedStatement ps = conn.prepareStatement("SELECT count(*) FROM clientes");
+            PreparedStatement ps = conn.prepareStatement("SELECT MAX(codCliente) FROM clientes;");
 
             ResultSet rs = ps.executeQuery();
 
             if (rs.next()) {
                 // Extrai o valor do ResultSet e atribui à variável codCliente
-                this.codCliente = rs.getInt(1);
+                this.codCliente = rs.getInt(1) + 1;
             }
 
         } catch (SQLException ex) {

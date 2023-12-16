@@ -91,10 +91,10 @@ public class ClienteDAO implements OperacoesDAO {
            
            try {
                 Connection conn = ConexaoMySQL.getConexaoMySQL();
-                PreparedStatement ps = conn.prepareStatement("UPDATE pessoas SET ativo='1' WHERE cpf=?");
+                PreparedStatement ps = conn.prepareStatement("UPDATE pessoas SET ativo='1', obs=? WHERE cpf=?");
                                                                     
-                 
-                ps.setLong(1, cNovo.getCpf());
+                ps.setString(1,cNovo.getObs());
+                ps.setLong(2, cNovo.getCpf());
                                  
                 int rowCount = ps.executeUpdate();        
                      
@@ -219,28 +219,33 @@ public class ClienteDAO implements OperacoesDAO {
 
             try {
                 Connection conn = ConexaoMySQL.getConexaoMySQL();
-                PreparedStatement ps = conn.prepareStatement("SELECT * FROM pessoas");             
+                PreparedStatement ps = conn.prepareStatement("SELECT * FROM clientes JOIN pessoas ON clientes.fk_Cpf = pessoas.cpf ORDER BY clientes.codCliente ASC;");             
                 ResultSet rs = ps.executeQuery();
 
-                    while(rs.next()){  
-                    long cpf = rs.getLong(1);
-                    String nome = rs.getString(3);
-                    Cliente c  = new Cliente(nome, cpf);
-                    
-                    c.setRg(rs.getLong(2));
-                    c.setEndereco(rs.getString(4));
-                    c.setNumero(rs.getInt(5));
-                    c.setEstado(rs.getString(6));
-                    c.setTelefone(rs.getLong(7));
-                    c.setAtivo(rs.getBoolean(8));
-                    c.setObs(rs.getString(9));
-                    c.setBairro(rs.getString(10));
-                    c.setCidade(rs.getString(11));
-                    c.setApto(rs.getInt(12));
-                    c.setCep(rs.getInt(13));            
-                    
-                    minhaLista.add(c);
-                }         
+                
+                    while(rs.next()){ 
+                        
+                        long cpf = rs.getLong(2);
+                        String nome = rs.getString(8);
+                        Cliente c  = new Cliente(nome, cpf);
+                        c.setCodCliente(rs.getInt(1));
+                        c.setQntPedidos(rs.getInt(3));
+                        c.setDivida(rs.getDouble(4));
+                        c.setCredito(rs.getDouble(5));
+                        c.setRg(rs.getLong(7));
+                        c.setEndereco(rs.getString(9));
+                        c.setNumero(rs.getInt(10));
+                        c.setEstado(rs.getString(11));
+                        c.setTelefone(rs.getLong(12));
+                        c.setAtivo(rs.getBoolean(13));
+                        c.setObs(rs.getString(14));
+                        c.setBairro(rs.getString(15));
+                        c.setCidade(rs.getString(16));
+                        c.setApto(rs.getInt(17));
+                        c.setCep(rs.getInt(18));            
+
+                        minhaLista.add(c);
+                    }         
                     
                 conn.close();
                 

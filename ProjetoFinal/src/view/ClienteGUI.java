@@ -60,18 +60,20 @@ public class ClienteGUI extends javax.swing.JFrame {
                 DefaultTableModel model = (DefaultTableModel) tbClientes.getModel();
                 Object[] rowData = {""};
                 model.addRow(rowData);
-                tbClientes.setValueAt(cad.get(i).getNome(), i, 0);
-                tbClientes.setValueAt(cad.get(i).getTelefone(), i, 1);
-                tbClientes.setValueAt(cad.get(i).getEnderco(), i, 2);
-                tbClientes.setValueAt(cad.get(i).getNumero(), i, 3);
-                tbClientes.setValueAt(cad.get(i).getBairro(), i, 4);
-                tbClientes.setValueAt(cad.get(i).getCidade(), i, 5);
+                tbClientes.setValueAt(cad.get(i).getCodCliente(), i, 0);
+                tbClientes.setValueAt(cad.get(i).getNome(), i, 1);
+                tbClientes.setValueAt(cad.get(i).getTelefone(), i, 2);
+                tbClientes.setValueAt(cad.get(i).getEnderco(), i, 3);
+                tbClientes.setValueAt(cad.get(i).getNumero(), i, 4);
+                tbClientes.setValueAt(cad.get(i).getBairro(), i, 5);
+                tbClientes.setValueAt(cad.get(i).getCidade(), i, 6);
+                tbClientes.setValueAt(cad.get(i).getObs(), i, 7);
             }
         }
 
         //desabilita os botoes 
         btSalvar.setEnabled(false);
-        btCancelar.setEnabled(true);
+        btCancelar.setEnabled(false);
     }
 
     /**
@@ -129,7 +131,9 @@ public class ClienteGUI extends javax.swing.JFrame {
         btSalvar = new javax.swing.JButton();
         btCancelar = new javax.swing.JButton();
         jLabel19 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        tfCidade = new javax.swing.JTextField();
+        jLabel20 = new javax.swing.JLabel();
+        jlStatus = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastro de Clientes");
@@ -162,7 +166,7 @@ public class ClienteGUI extends javax.swing.JFrame {
         jLabel4.setText("*CPF");
         cadastroClientes.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 110, 61, 30));
 
-        jLabel5.setText("*CELULAR");
+        jLabel5.setText("CELULAR");
         cadastroClientes.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 70, -1, 26));
 
         jLabel6.setText("RG");
@@ -175,7 +179,7 @@ public class ClienteGUI extends javax.swing.JFrame {
         cadastroClientes.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, 20, 30));
 
         jLabel9.setText("*BAIRRO/PRAIA");
-        cadastroClientes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, -1, 30));
+        cadastroClientes.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 190, 90, 30));
 
         tfObservacao.setEnabled(false);
         cadastroClientes.add(tfObservacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 230, 270, -1));
@@ -212,7 +216,7 @@ public class ClienteGUI extends javax.swing.JFrame {
         cadastroClientes.add(tfApto, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 70, -1));
 
         tfBairro.setEnabled(false);
-        cadastroClientes.add(tfBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 190, 190, -1));
+        cadastroClientes.add(tfBairro, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 190, 190, -1));
 
         tfEstado.setEnabled(false);
         cadastroClientes.add(tfEstado, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 190, 130, -1));
@@ -283,11 +287,11 @@ public class ClienteGUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Telefone", "Endereço", "Número", "Bairro", "Cidade"
+                "Cod Cliente", "Nome", "Telefone", "Endereço", "Número", "Bairro", "Cidade", "Obs"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -301,11 +305,7 @@ public class ClienteGUI extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tbClientes);
         if (tbClientes.getColumnModel().getColumnCount() > 0) {
-            tbClientes.getColumnModel().getColumn(0).setPreferredWidth(4);
-            tbClientes.getColumnModel().getColumn(1).setPreferredWidth(200);
-            tbClientes.getColumnModel().getColumn(2).setPreferredWidth(70);
-            tbClientes.getColumnModel().getColumn(3).setPreferredWidth(150);
-            tbClientes.getColumnModel().getColumn(4).setPreferredWidth(2);
+            tbClientes.getColumnModel().getColumn(0).setPreferredWidth(30);
         }
 
         cadastroClientes.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 350, 910, 280));
@@ -345,7 +345,7 @@ public class ClienteGUI extends javax.swing.JFrame {
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/menino2.png"))); // NOI18N
         jLabel15.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        cadastroClientes.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 150, 180));
+        cadastroClientes.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 150, 180));
 
         btSalvar.setText("SALVAR");
         btSalvar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -368,8 +368,18 @@ public class ClienteGUI extends javax.swing.JFrame {
         jLabel19.setText("* Campos Obrigatórios.");
         cadastroClientes.add(jLabel19, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, -1, -1));
 
-        jComboBox1.setModel(new CidadesComboBoxModel());
-        cadastroClientes.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 230, -1, -1));
+        tfCidade.setEnabled(false);
+        cadastroClientes.add(tfCidade, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 230, 210, -1));
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel20.setText("STATUS:");
+        cadastroClientes.add(jLabel20, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+
+        jlStatus.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jlStatus.setText("___________");
+        jlStatus.setEnabled(false);
+        cadastroClientes.add(jlStatus, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 230, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -401,7 +411,7 @@ public class ClienteGUI extends javax.swing.JFrame {
         Cliente cliente1 = new Cliente("a", 1);
 
         cliente1.gerarCod(cad);
-        int codigo = cliente1.getCodCliente() + 1;
+        int codigo = cliente1.getCodCliente();
         
         // habilita e desabilita os botoes
         btNovo.setEnabled(false);
@@ -412,7 +422,7 @@ public class ClienteGUI extends javax.swing.JFrame {
         tfCodigo.setText("" + codigo);
         tfNome.requestFocus();
         tbClientes.setVisible(false);
-        
+        tfCpf.setEditable(true);
         
         // limpas e ativa os campos
         Util.EditarFrame.limparDados(this);
@@ -421,7 +431,7 @@ public class ClienteGUI extends javax.swing.JFrame {
 
     private void btSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSalvarActionPerformed
         String nome = "";
-        long cpf;
+        long cpf = 0;
 
         // esses metodos fazem algumas consistencias nos dados antes de salvar no objeto
         //verifica se o campo tfNome não esta vazio
@@ -455,7 +465,7 @@ public class ClienteGUI extends javax.swing.JFrame {
         //criado objeto CLiente para polular com os dados e psterior ingresso do objeto no ArrayList
         Cliente c = new Cliente(nome, cpf);
         
-        //daqui para baixo foram feitas coonsistencias identicas as verificadas acima
+        //daqui para baixo foram feitas coonsistencias identicas as verificadas acima.
         if (!"".equals(tfCelular.getText())) {
             try {
                 c.setTelefone(Long.parseLong(tfCelular.getText()));
@@ -479,12 +489,12 @@ public class ClienteGUI extends javax.swing.JFrame {
             return;
         }
         
-        /*if (!"".equals(tfCidade.getText())) {
+        if (!"".equals(tfCidade.getText())) {
             c.setCidade(tfCidade.getText());
         } else {
                 JOptionPane.showMessageDialog(null, "O campo CIDADE é OBRIGATÓRIO!!");
                 return;
-        }*/
+        }
 
         if (!"".equals(tfApto.getText())) {
             try {
@@ -516,12 +526,17 @@ public class ClienteGUI extends javax.swing.JFrame {
                 return;
         }
         
-        if (!"".equals(tfEstado.getText())){
-            if(!Util.isNumeric(tfEstado.getText())){
+        if (!"".equals(tfEstado.getText())) {
+            if(tfEstado.getText().length() == 2){
+                if(!Util.isNumeric(tfEstado.getText())){
                 c.setEstado(tfEstado.getText());
+                }else{
+                    JOptionPane.showMessageDialog(null, "Erro no campo estado, não é permitido inserir numero neste campo.");
+                    return;
+                }
             }else{
-                JOptionPane.showMessageDialog(null, "Erro no campo estado, não é permitido inserir numero neste campo.");
-                return;
+                JOptionPane.showMessageDialog(null, "Erro no campo estado, insira dois caracteres!");
+                    return;
             }
         }
 
@@ -556,9 +571,10 @@ public class ClienteGUI extends javax.swing.JFrame {
             String texto = JOptionPane.showInputDialog(null, "Tem certeza que deseja DESABILITAR o cliente???\nIngresse o motivo da desabilitação.");
             c.setObs(texto);
 
-	//o metodo excluir, na verdade não exclui oo objeto, ele apenas marco o atributo Ativo como false.
+            //o metodo excluir, na verdade não exclui oo objeto, ele apenas marco o atributo Ativo como false.
             if (cliente.excluir(c)) {
                 JOptionPane.showMessageDialog(null, "Desabilitado com Sucesso!!");
+                
             } else {
                 JOptionPane.showMessageDialog(null, "Erro ao Desabilitar o Cliente!!");
             }
@@ -577,22 +593,23 @@ public class ClienteGUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Cadastro vazio");
         } else {
            //captura o modelo da tabela, cria nova linha e aplica o modelo 
-           if(operacao == 0){
-            DefaultTableModel model = (DefaultTableModel) tbClientes.getModel();
-            Object[] rowData = {""};
-            model.addRow(rowData);
-           }
+//           if(operacao == 0){
+//            DefaultTableModel model = (DefaultTableModel) tbClientes.getModel();
+//            Object[] rowData = {""};
+//            model.addRow(rowData);
+//           }
+
            //seta os valores dos atributos do cliente nas colunas da tabela
-            cad = cliente.list();
-            for (int i = 0; i <cad.size() ; i++) {
-                
-                tbClientes.setValueAt(cad.get(i).getNome(), i, 0);
-                tbClientes.setValueAt(cad.get(i).getTelefone(), i, 1);
-                tbClientes.setValueAt(cad.get(i).getEnderco(), i, 2);
-                tbClientes.setValueAt(cad.get(i).getNumero(), i, 3);
-                tbClientes.setValueAt(cad.get(i).getBairro(), i, 4);
-                tbClientes.setValueAt(cad.get(i).getCidade(), i, 5);
-                }
+//            cad = cliente.list();
+//            for (int i = 0; i <cad.size() ; i++) {
+//                
+//                tbClientes.setValueAt(cad.get(i).getNome(), i, 0);
+//                tbClientes.setValueAt(cad.get(i).getTelefone(), i, 1);
+//                tbClientes.setValueAt(cad.get(i).getEnderco(), i, 2);
+//                tbClientes.setValueAt(cad.get(i).getNumero(), i, 3);
+//                tbClientes.setValueAt(cad.get(i).getBairro(), i, 4);
+//                tbClientes.setValueAt(cad.get(i).getCidade(), i, 5);
+//                }
             }
         
         //limpa e desativa os campos
@@ -600,13 +617,15 @@ public class ClienteGUI extends javax.swing.JFrame {
         Util.EditarFrame.desativaCampos(this);
         
         //manipula os botoes
-        tfCodigo.setText("");
-        btEditar.setEnabled(false);
-        btDesabilitar.setEnabled(false);
-        btSalvar.setText("SALVAR");
-        btSalvar.setEnabled(false);
-        tbClientes.setVisible(true);
+//        tfCodigo.setText("");
+//        btEditar.setEnabled(false);
+//        btDesabilitar.setEnabled(false);
+//        btSalvar.setText("SALVAR");
+//        btSalvar.setEnabled(false);
+//        tbClientes.setVisible(true);
         operacao = 1;
+        dispose();
+        new ClienteGUI().setVisible(true);
     }//GEN-LAST:event_btSalvarActionPerformed
 
     private void btCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btCancelarActionPerformed
@@ -621,46 +640,47 @@ public class ClienteGUI extends javax.swing.JFrame {
         tbClientes.setVisible(true);
         tfNome.requestFocus();
         operacao = 1;
-        this.dispose();
     }//GEN-LAST:event_btCancelarActionPerformed
 
     private void tbClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbClientesMouseClicked
     
-            // Obtém o modelo de seleção de linha da JTable
-            ListSelectionModel selectionModel = tbClientes.getSelectionModel();
-
-            // Adiciona um MouseListener para tratar o evento de clique
-            tbClientes.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
                     // Obtém o índice da linha clicada
-                    int rowIndex = tbClientes.rowAtPoint(e.getPoint());
+                    int rowIndex = tbClientes.rowAtPoint(evt.getPoint());
                     // Verifica se o clique foi em uma linha válida
                     if (rowIndex >= 0) {
                         // Define a linha clicada como a linha selecionada
-                        selectionModel.setSelectionInterval(rowIndex, rowIndex);
+                        //selectionModel.setSelectionInterval(rowIndex, rowIndex);
                         //Cliente selecionado = (Cliente) cliente.pesquisar(rowIndex);
-                        tfCodigo.setText(String.valueOf(rowIndex));
+                        //tfCodigo.setText(String.valueOf(rowIndex));
+                        tfCodigo.setText(String.valueOf(cad.get(rowIndex).getCodCliente()));
                         tfNome.setText( cad.get(rowIndex).getNome());
                         tfCelular.setText(String.valueOf(cad.get(rowIndex).getTelefone()));
                         tfCpf.setText(String.valueOf(cad.get(rowIndex).getCpf()));
                         tfRg.setText(String.valueOf(cad.get(rowIndex).getRg()));
-                        tfEndereco.setText(cad.get(rowIndex+1).getEndereco());
+                        tfEndereco.setText(cad.get(rowIndex).getEndereco());
                         tfNumero.setText(String.valueOf(cad.get(rowIndex).getNumero()));
                         tfApto.setText(String.valueOf(cad.get(rowIndex).getApto()));
                         tfBairro.setText(cad.get(rowIndex).getBairro());
                         tfEstado.setText(cad.get(rowIndex).getEstado());
                         tfCep.setText(String.valueOf(cad.get(rowIndex).getCep()));
-                        //tfCidade.setText(cad.get(rowIndex).getCidade());
+                        tfCidade.setText(cad.get(rowIndex).getCidade());
                         tfObservacao.setText(cad.get(rowIndex).getObs());
+                        String status = "";
+                        if(cad.get(rowIndex).isAtivo()){
+                            status = "Desativado!";
+                        }else{
+                            status = "Ativo!";
+                        }
+                        jlStatus.setText(status);
                     }
                     //manipula os botões
                     btNovo.setEnabled(false);
                     btEditar.setEnabled(true);
                     btDesabilitar.setEnabled(true);
                     btCancelar.setEnabled(true);
-                }
-            });
+                    jlStatus.setEnabled(true);
+                
+            
     }//GEN-LAST:event_tbClientesMouseClicked
     //este botão apenas ativa ps campos, manipula os botoes e muda a bandeira para 1 editar
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
@@ -668,16 +688,20 @@ public class ClienteGUI extends javax.swing.JFrame {
         btSalvar.setEnabled(true);
         btEditar.setEnabled(false);
         btDesabilitar.setEnabled(false);
+        tfCpf.setEnabled(false);
+        tbClientes.setVisible(false);
         operacao = 1;
     }//GEN-LAST:event_btEditarActionPerformed
 
     //este botão apenas ativa ps campos, manipula os botoes e muda a bandeira para 2 excluir
     private void btDesabilitarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDesabilitarActionPerformed
-        util.Util.EditarFrame.ativaCampos(this);
+        //util.Util.EditarFrame.ativaCampos(this);
         btSalvar.setText("DESABILITAR");
         btSalvar.setEnabled(true);
         btEditar.setEnabled(false);
         btDesabilitar.setEnabled(false);
+        //tfCpf.setEnabled(false);
+        tbClientes.setVisible(false);
         operacao = 2;
     }//GEN-LAST:event_btDesabilitarActionPerformed
 
@@ -725,7 +749,6 @@ public class ClienteGUI extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> cbPontos;
     private javax.swing.JComboBox<String> cbPublicidade;
     private javax.swing.JComboBox<String> cbTabela;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -738,6 +761,7 @@ public class ClienteGUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -750,11 +774,13 @@ public class ClienteGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel jlStatus;
     private javax.swing.JTable tbClientes;
     private javax.swing.JTextField tfApto;
     private javax.swing.JTextField tfBairro;
     private javax.swing.JTextField tfCelular;
     private javax.swing.JTextField tfCep;
+    private javax.swing.JTextField tfCidade;
     private javax.swing.JLabel tfCodigo;
     private javax.swing.JTextField tfCpf;
     private javax.swing.JTextField tfEndereco;
